@@ -11,6 +11,9 @@
   "scripts": {
     "start": "npm run build && node ./dist/main.js",
     "start:cli-version": "npm run build && node ./dist/main.cli.js --version",
+    "start:cli-generate": "npm run build && node ./dist/main.cli.js --generate",
+    "start:cli-import": "npm run build && node ./dist/main.cli.js --import",
+    "start:cli-help": "npm run build && node ./dist/main.cli.js",
     "build": "npm run clean && npm run compile",
     "lint": "eslint src/ --ext .ts",
     "compile": "tsc -p tsconfig.json",
