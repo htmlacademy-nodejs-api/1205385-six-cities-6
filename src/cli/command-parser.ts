@@ -7,15 +7,12 @@ export class CommandParser {
 
     for (const argument of cliArguments) {
       if (argument.startsWith('--')) {
-        console.log('1');
 
         parsedCommand[argument] = [];
         currentCommand = argument;
-        console.log('1', parsedCommand, argument);
 
       } else if (currentCommand && argument) {
         parsedCommand[currentCommand].push(argument);
-        console.log('2', parsedCommand);
       }
     }
     console.log(parsedCommand);
