@@ -8,14 +8,14 @@ export class TSVFileReader implements FileReader {
   constructor(private readonly filename: string) {}
 
   public read(): void {
-    this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });    
+    this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });
   }
 
   public toArray(): Offer[] {
     if (!this.rawData) {
       throw new Error('File was not read');
     }
-    
+
     return this.rawData
       .split('\n')
       .filter((row) => row.trim().length > 0)
@@ -37,6 +37,6 @@ export class TSVFileReader implements FileReader {
         goods: goods.split(';').map((adv) => adv) as Good[],
         host: {avatarUrl, isPro: Boolean(isPro), name, mail, password},
         location: { latitude: Number(latitude), longitude: Number(longitude)}
-    }));
+      }));
   }
 }
