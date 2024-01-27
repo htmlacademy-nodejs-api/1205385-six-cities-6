@@ -15,7 +15,6 @@ export class CommandParser {
         parsedCommand[currentCommand].push(argument);
       }
     }
-    console.log(parsedCommand);
     
     return parsedCommand;
   }

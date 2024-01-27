@@ -8,7 +8,6 @@ function bootstrap() {
     new VersionCommand(),
     new ImportCommand(),
   ]);
-  console.log(process.argv);
   
   cliApplication.processCommand(process.argv);
 }
