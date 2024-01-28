@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { FileReader } from './file-reader.interface.js';
-import { City, Good, Offer, Type } from '../../types/index.js';
+import { City, Good, Offer, OfferType } from '../../types/index.js';
 
 export class TSVFileReader implements FileReader {
   private rawData = '';
@@ -30,7 +30,7 @@ export class TSVFileReader implements FileReader {
         isPremium: Boolean(isPremium),
         isFavorite: Boolean(isFavorite),
         rating: Number(rating),
-        type: type as Type,
+        type: type as OfferType,
         bedrooms: Number(bedrooms),
         maxAdults: Number(maxAdults),
         price: Number(price),
