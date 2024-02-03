@@ -15,11 +15,12 @@ const LAST_WEEK_DAY = 7;
 const COORDINATE_MIN = 1;
 const COORDINATE_MAX = 50;
 
-
 export class TSVOfferGenerator implements OfferGenerator {
   constructor(private readonly mockData: MockServerData) {}
 
   public generate(): string {
+    console.log(this.mockData);
+
     const title = getRandomItem<string>(this.mockData.titles);
     const description = getRandomItem<string>(this.mockData.descriptions);
     const postDate = dayjs().subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY), 'day').toISOString();
@@ -37,18 +38,16 @@ export class TSVOfferGenerator implements OfferGenerator {
     const avatar = getRandomItem<string>(this.mockData.avatarUrls);
     const isPro = getRandomItem(['true', 'false']);
     const name = getRandomItem<string>(this.mockData.users);
-    const mail = getRandomItem<string>(this.mockData.mails);
+    const email = getRandomItem<string>(this.mockData.mails);
     const latitude = generateRandomValue(COORDINATE_MIN, COORDINATE_MAX, 5).toString();
     const longitude = generateRandomValue(COORDINATE_MIN, COORDINATE_MAX, 5).toString();
 
-    const [firstname, lastname] = name.split(' ');
+    // const [firstname, lastname] = name.split(' ');
 
     return [
       title, description, postDate,
-      city, type, price, previewImage,
-      firstname, lastname, images, rating,
-      bedrooms, maxAdults, goods, isPremium, isFavorite, isPro,
-      avatar, mail, latitude, longitude
+      city, previewImage, images, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods,
+      avatar, isPro, name, email, latitude, longitude
     ].join('\t');
   }
 }
