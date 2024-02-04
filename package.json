@@ -19,7 +19,7 @@
     "compile": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "ts": "ts-node",
-    "server:mocks": "json-server src/mocks/mock-server-data.json --port 3123"
+    "server:mocks": "json-server mocks/mock-server-data.json --port 3123"
   },
   "devDependencies": {
     "@types/node": "18.17.17",

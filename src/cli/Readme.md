@@ -4,8 +4,8 @@
 ```
 npm run ts ./src/main.cli.ts -- --version
 npm run ts ./src/main.cli.ts -- --help 
-npm run ts ./src/main.cli.ts -- --import  src/mocks/test_generate.tsv
-npm run ts ./src/main.cli.ts -- --generate 100 src/mocks/test_generate.tsv http://localhost:3123/api
+npm run ts ./src/main.cli.ts -- --import  mocks/test_generate.tsv
+npm run ts ./src/main.cli.ts -- --generate 100 mocks/test_generate.tsv http://localhost:3123/api
 ```
 Команды:
 ```
