@@ -1,8 +1,8 @@
 import got from 'got';
 import { appendFile } from 'node:fs/promises';
 import { Command } from './command.interface.js';
-import { MockServerData } from '../../shared/types/index.js';
 import { TSVOfferGenerator } from '../../shared/libs/offer-generator/index.js';
+import type { MockServerData } from '../../shared/types/index.js';
 
 export class GenerateCommand implements Command {
   private initialData: MockServerData;

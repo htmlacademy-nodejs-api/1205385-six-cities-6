@@ -1,4 +1,4 @@
-import { City, Good, Offer, OfferType } from '../types/index.js';
+import type { City, Good, Offer, OfferType } from '../types/index.js';
 
 export function createOffer(offerData: string): Offer {
   const [

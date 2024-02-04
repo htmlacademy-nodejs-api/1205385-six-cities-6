@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { OfferGenerator } from './offer-generator.interface.js';
-import { MockServerData } from '../../types/index.js';
 import { generateRandomValue, getRandomItem, getRandomItems } from '../../helpers/index.js';
+import { OfferGenerator } from './offer-generator.interface.js';
+import type { MockServerData } from '../../types/index.js';
 
 const MIN_PRICE = 500;
 const MAX_PRICE = 2000;
@@ -41,8 +41,6 @@ export class TSVOfferGenerator implements OfferGenerator {
     const email = getRandomItem<string>(this.mockData.mails);
     const latitude = generateRandomValue(COORDINATE_MIN, COORDINATE_MAX, 5).toString();
     const longitude = generateRandomValue(COORDINATE_MIN, COORDINATE_MAX, 5).toString();
-
-    // const [firstname, lastname] = name.split(' ');
 
     return [
       title, description, postDate,
