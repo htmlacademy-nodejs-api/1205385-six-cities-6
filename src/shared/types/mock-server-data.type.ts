@@ -1,4 +1,4 @@
-export type MockServerData =  {
+export type MockServerData = {
   titles: string[];
   descriptions: string[],
   postDates: Date[];

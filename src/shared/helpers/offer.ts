@@ -53,5 +53,5 @@ export function createOffer(offerData: string): Offer {
     goods: goods.split(';').map((adv) => adv) as Good[],
     host: user,
     location: location
-  }
+  };
 }
