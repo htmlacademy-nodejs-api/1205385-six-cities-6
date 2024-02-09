@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
 import { Logger, PinoLogger } from './shared/libs/logger/index.js';
-import { RestApplication } from "./rest/rest.application.js";
+import { RestApplication } from './rest/rest.application.js';
 import { Config, RestConfig, RestSchema } from './shared/libs/config/index.js';
 import { Component } from './shared/types/index.js';
 

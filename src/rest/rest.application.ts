@@ -1,7 +1,7 @@
-import { inject, injectable } from "inversify";
-import { Config, RestSchema } from "../shared/libs/config/index.js";
-import { Logger } from "../shared/libs/logger/index.js";
-import { Component } from "../shared/types/component.enum.js";
+import { inject, injectable } from 'inversify';
+import { Config, RestSchema } from '../shared/libs/config/index.js';
+import { Logger } from '../shared/libs/logger/index.js';
+import { Component } from '../shared/types/component.enum.js';
 @injectable()
 export class RestApplication {
   constructor(
@@ -10,7 +10,7 @@ export class RestApplication {
   ) {}
 
   public async init () {
-     this.logger.info('Application initialization');
-     this.logger.info(`Get value from env $PORT: ${this.config.get('PORT')}`);
+    this.logger.info('Application initialization');
+    this.logger.info(`Get value from env $PORT: ${this.config.get('PORT')}`);
   }
 }
