@@ -3,6 +3,10 @@ import { inject, injectable } from 'inversify';
 import { DatabaseClient } from './database-client.interface.js';
 import { Component } from '../../types/index.js';
 import { Logger } from '../logger/index.js';
+// import { setTimeout } from 'node:timers/promises';
+
+// const RETRY_COUNT = 5;
+// const RETRY_TIMEOUT = 1000;
 
 @injectable()
 export class MongoDatabaseClient implements DatabaseClient {
