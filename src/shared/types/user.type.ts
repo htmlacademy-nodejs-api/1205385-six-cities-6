@@ -1,5 +1,5 @@
 export type User = {
-    avatarUrl: string,
+    avatarUrl?: string,
     isPro: boolean,
     name: string,
     email: string,
