@@ -51,7 +51,7 @@ export function createOffer(offerData: string): Offer {
     maxAdults: Number(maxAdults),
     price: Number.parseInt(price, 10),
     goods: goods.split(';').map((adv) => adv) as Good[],
-    host: user,
+    user: user,
     location: location
   };
 }

@@ -15,7 +15,7 @@ export type Offer = {
     maxAdults: number;
     price: number;
     goods: Good[];
-    host: User;
+    user: User;
     comments?: Comment[];
     location: Location;
 };
