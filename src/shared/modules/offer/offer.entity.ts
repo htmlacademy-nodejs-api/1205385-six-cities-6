@@ -33,63 +33,63 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   public description: string;
 
   @prop()
-  postDate: Date;
+    postDate: Date;
 
   @prop({type: () => String})
-  city!: City;
+    city!: City;
 
   @prop()
-  previewImage!: string;
+    previewImage!: string;
 
   @prop({
     type: Array,
     default: () => [] as string[]
   })
-  images!: string[];
+    images!: string[];
 
   @prop()
-  isPremium: boolean;
+    isPremium: boolean;
 
   @prop()
-  isFavorite: boolean;
+    isFavorite: boolean;
 
   @prop()
-  rating: number;
+    rating: number;
 
   @prop({type: () => String})
-  type: OfferType;
+    type: OfferType;
 
   @prop({default: 1})
-  bedrooms: number;
+    bedrooms: number;
 
   @prop({default: 1})
-  maxAdults: number;
+    maxAdults: number;
 
   @prop()
-  price: number;
+    price: number;
 
   @prop({
     type: Array,
     default: () => [] as string[]
   })
-  goods: Good[];
+    goods: Good[];
 
   @prop({
     type: () => Object
   })
-  location: Location;
+    location: Location;
 
   @prop({
     ref: CommentEntity,
     default: () => [],
   })
-  comments: Ref<CommentEntity>[];
+    comments: Ref<CommentEntity>[];
 
   @prop({
     ref: UserEntity,
     required: true
   })
-  userId: Ref<UserEntity>;
+    userId: Ref<UserEntity>;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);

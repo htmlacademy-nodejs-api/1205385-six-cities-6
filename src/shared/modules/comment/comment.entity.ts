@@ -22,10 +22,10 @@ export class CommentEntity extends defaultClasses.TimeStamps {
   public content: string;
 
   @prop()
-  rating: number;
+    rating: number;
 
   @prop()
-  postDate: Date;
+    postDate: Date;
 
   // @prop({
   //   ref: UserEntity,
