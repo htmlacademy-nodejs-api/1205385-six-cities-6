@@ -1,9 +1,10 @@
 import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
-import { City, Comment, Good, Location, OfferType } from '../../types/index.js';
+import { City, Good, Location, OfferType } from '../../types/index.js';
 import { UserEntity } from '../user/user.entity.js';
+import { CommentEntity } from '../comment/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export interface CategoryEntity extends defaultClasses.Base {}
+export interface OfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
   schemaOptions: {
@@ -73,25 +74,22 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   })
   goods: Good[];
 
-  @prop({default: 0})
-  public commentCount!: number;
-
-  // @prop({})
-  // public comments!: Comment[]
-
   @prop({
     type: () => Object
   })
   location: Location;
 
   @prop({
+    ref: CommentEntity,
+    default: () => [],
+  })
+  comments: Ref<CommentEntity>[];
+
+  @prop({
     ref: UserEntity,
     required: true
   })
   userId: Ref<UserEntity>;
-
-  @prop({required: true, trim: true})
-  public name!: string;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);
