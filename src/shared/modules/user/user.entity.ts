@@ -1,8 +1,8 @@
-import { getModelForClass, prop, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
+import { getModelForClass, prop, defaultClasses, modelOptions } from '@typegoose/typegoose';
 import { User } from '../../types/index.js';
 import { createSHA256 } from '../../helpers/index.js';
-import { OfferEntity } from '../offer/index.js';
-import { CommentEntity } from '../comment/index.js';
+// import { OfferEntity } from '../offer/index.js';
+// import { CommentEntity } from '../comment/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface UserEntity extends defaultClasses.Base {}
@@ -28,17 +28,17 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({required: true})
   public isPro: boolean;
 
-  @prop({
-    ref: OfferEntity,
-    default: () => [],
-  })
-  offers: Ref<OfferEntity>[];
+  // @prop({
+  //   ref: OfferEntity,
+  //   default: () => [],
+  // })
+  // offers: Ref<OfferEntity>[];
 
-  @prop({
-    ref: CommentEntity,
-    default: () => [],
-  })
-  comments: Ref<CommentEntity>[];
+  // @prop({
+  //   ref: CommentEntity,
+  //   default: () => [],
+  // })
+  // comments: Ref<CommentEntity>[];
 
   @prop({required: true, default: ''})
   private password?: string;

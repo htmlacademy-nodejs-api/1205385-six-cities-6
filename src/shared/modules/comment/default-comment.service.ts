@@ -23,4 +23,18 @@ export class DefaultCommentService implements CommentService {
   public async findById(commentId: string): Promise<DocumentType<CommentEntity> | null> {
     return this.commentModel.findById(commentId).exec();
   }
+
+  // public async findByCategoryName(commentContent: string): Promise<DocumentType<CommentEntity> | null> {
+  //   return this.commentModel.findOne({name: commentContent}).exec();
+  // }
+
+  // public async findByCategoryNameOrCreate(commentContent: string, dto: CreateCommentDto): Promise<DocumentType<CommentEntity>> {
+  //   const existedComment = await this.findByCategoryName(commentContent);
+
+  //   if (existedComment) {
+  //     return existedComment;
+  //   }
+
+  //   return this.create(dto);
+  // }
 }

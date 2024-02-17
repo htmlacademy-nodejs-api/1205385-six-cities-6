@@ -27,8 +27,8 @@ export function createOffer(offerData: string): Offer {
   const user = {
     email,
     isPro: Boolean(isPro),
+    avatarUrl,
     name,
-    avatarUrl
   };
 
   const location = {
