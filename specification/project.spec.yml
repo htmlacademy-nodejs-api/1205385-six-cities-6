@@ -54,6 +54,22 @@ paths:
       summary: Проверка состояния пользователя
       description: Возвращает информацию по авторизованному пользователю
 
+  /users/logout/:
+    post:
+      tags:
+        - users
+      summary: Завершения пользовательского сеанса.
+      description: Только если авторизация выполняется на основе сессий.
+        Если токен прошёл проверку, сервис завершает пользовательский сеанс (сессию)
+
+  /users/check_auth/:
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя.
+      description: Проверка состояния пользователя.
+        Если клиент авторизован, сервис возвращает соответствующий код состояния и информацию о пользователе.
+
   /users/{userId}/avatar:
     post:
       tags:
@@ -91,3 +107,60 @@ components:
         email:
           type: string
           example: keks@htmlacademy.ru
+
+    # createOffer:
+    #   type: object
+
+    #   properties:
+    #     id:
+    #       type: string
+    #       example: 6329c3d6a04ab1061c6425ea
+    #     title:
+    #       type: string
+    #       example: Title
+    #     description:
+    #       type: string
+    #       example: Description
+    #     postDate:
+    #       type: string
+    #       example: 2018-10-29 10:02:48 AM
+    #     city:
+    #       type: object
+
+    #     previewImage:
+    #       type: string
+    #       example: photo.png
+    #     images:
+    #       type: array
+    #     isPremium:
+    #       type: boolean
+    #       example: false
+    #     isFavorite:
+    #       type: boolean
+    #       example: true
+    #     rating:
+    #       type: number
+    #       example: 4
+    #     type:
+    #       type: string
+    #       example: type
+    #     bedrooms:
+    #       type: number
+    #       example: 3
+    #     maxAdults:
+    #       type: number
+    #       example: 2
+    #     price:
+    #       type: number
+    #       example: 2000
+    #     goods:
+    #       type: array
+    #       example: [good, good]
+    #     userId:
+    #       type: string
+    #       example:  6329c3d6a04ab1061c6425ea
+    #     comments:
+    #       type: array
+    #       example: [6329c3d6a04ab1061c6425ea, 6329c3d6a04ab1061c6425ea]
+    #     location:
+    #       type: object
