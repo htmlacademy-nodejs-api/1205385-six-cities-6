@@ -78,6 +78,28 @@ paths:
       description: Загружает изображение аватара пользователя. Изображение
         аватара должно быть в формате `png` или `jpg`.
 
+  /offers/create:
+    post:
+      tags:
+        - offers
+      summary: Создание предложения
+      description: Создание нового предложения.
+      requestBody:
+        description: Информация для создания нового предложения.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createOffer'
+        required: true
+
+      responses:
+        "201":
+          description:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOffer'
+
 components:
   schemas:
     createUser:
@@ -108,59 +130,84 @@ components:
           type: string
           example: keks@htmlacademy.ru
 
-    # createOffer:
-    #   type: object
+    createOffer:
+      type: object
 
-    #   properties:
-    #     id:
-    #       type: string
-    #       example: 6329c3d6a04ab1061c6425ea
-    #     title:
-    #       type: string
-    #       example: Title
-    #     description:
-    #       type: string
-    #       example: Description
-    #     postDate:
-    #       type: string
-    #       example: 2018-10-29 10:02:48 AM
-    #     city:
-    #       type: object
+      properties:
+        title:
+          type: string
+          example: Title
+        description:
+          type: string
+          example: Description
+        postDate:
+          type: string
+          example: 2022-04-06T08:45:40.283Z
+          format: date
+        city:
+          type: string
+          example: Paris
+          enum:
+            - Paris
+            - Cologne
+            - Brussels
+            - Amsterdam
+            - Hamburg
+            - Dusseldorf
+        previewImage:
+          type: string
+          example: photo.png
+        images:
+          type: array
+          example:
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+        isPremium:
+          type: boolean
+          example: false
+        isFavorite:
+          type: boolean
+          example: true
+        rating:
+          type: number
+          example: 4
+        type:
+          type: string
+          example: type
+        bedrooms:
+          type: number
+          example: 3
+        maxAdults:
+          type: number
+          example: 2
+        price:
+          type: number
+          example: 2000
+        goods:
+          type: array
+          example:
+            - Baby seat
+            - Washer
+            - Towels
+          enum:
+            - Breakfast
+            - Air conditioning
+            - Laptop friendly workspace
+            - Baby seat
+            - Washer
+            - Towels
+            - Fridge
+        userId:
+          type: string
+          example:  6329c3d6a04ab1061c6425ea
+        latitude:
+          type: number
+          example: 48.85661
+        longitude:
+          type: number
+          example: 2.351499
 
-    #     previewImage:
-    #       type: string
-    #       example: photo.png
-    #     images:
-    #       type: array
-    #     isPremium:
-    #       type: boolean
-    #       example: false
-    #     isFavorite:
-    #       type: boolean
-    #       example: true
-    #     rating:
-    #       type: number
-    #       example: 4
-    #     type:
-    #       type: string
-    #       example: type
-    #     bedrooms:
-    #       type: number
-    #       example: 3
-    #     maxAdults:
-    #       type: number
-    #       example: 2
-    #     price:
-    #       type: number
-    #       example: 2000
-    #     goods:
-    #       type: array
-    #       example: [good, good]
-    #     userId:
-    #       type: string
-    #       example:  6329c3d6a04ab1061c6425ea
-    #     comments:
-    #       type: array
-    #       example: [6329c3d6a04ab1061c6425ea, 6329c3d6a04ab1061c6425ea]
-    #     location:
-    #       type: object
