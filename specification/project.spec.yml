@@ -1,0 +1,443 @@
+openapi: 3.1.0
+info:
+  title: API сервер для демо-проекта «Шесть городов».
+  description: |-
+    * Список ресурсов и маршрутов сервера «Шесть городов».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+  - name: offers
+    description: Действия с объявлениями.
+  - name: comments
+    description: Действия с комментариями.
+  - name: users
+    description: Действия с пользователем.
+
+paths:
+  /users/register:
+    post:
+      tags:
+        - users
+      summary: Регистрация пользователя
+      description: Регистрирует нового пользователя.
+      requestBody:
+        description: Информация для создания нового пользователя.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createUser'
+        required: true
+
+      responses:
+        "201":
+          description: Пользователь зарегистрирован. Объект пользователя.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+        "409":
+          description: Пользователь с таким email уже существует.
+
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: Авторизация пользователя
+      description: Авторизует пользователя на основе логина и пароля
+
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя
+      description: Возвращает информацию по авторизованному пользователю
+
+  /users/logout/:
+    post:
+      tags:
+        - users
+      summary: Завершения пользовательского сеанса.
+      description: Только если авторизация выполняется на основе сессий.
+        Если токен прошёл проверку, сервис завершает пользовательский сеанс (сессию)
+
+  /users/check_auth/:
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя.
+      description: Проверка состояния пользователя.
+        Если клиент авторизован, сервис возвращает соответствующий код состояния и информацию о пользователе.
+
+  /users/{userId}/avatar:
+    post:
+      tags:
+        - users
+      summary: Загрузить изображение аватара
+      description: Загружает изображение аватара пользователя. Изображение
+        аватара должно быть в формате `png` или `jpg`.
+# OFFERS
+  /offers:
+    get:
+      tags:
+        - offers
+      summary: Получить список предложений
+      description: Получить список предложений.
+
+  /offers/{status}:
+    get:
+      tags:
+        - offers
+      summary: Получить список с соответствующим статусом.
+      description: Получить список с соответствующим статусом например isPremium или isFavorite.
+
+  /offers/{offerId}:
+    get:
+      tags:
+        - offers
+      summary: Получить предложение
+      description: Получить предложение.
+      requestBody:
+        description: Информация для создания нового предложения.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offer'
+        required: true
+
+    post:
+      tags:
+        - offers
+      summary: Изменить предложение
+      description: Изменить Предложение.
+      requestBody:
+        description: Изменить любое из внутренних полей в модели предложения.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offer'
+        required: true
+
+    delete:
+      tags:
+        - offers
+      summary: Удаление предложения
+      description: Удаление предложения совсем.
+
+      responses:
+        "200":
+          description: Предложение удалено
+
+        "404":
+          description: Что то пошло не так.
+
+  /offers/create:
+    post:
+      tags:
+        - offers
+      summary: Создание предложения
+      description: Создание нового предложения.
+      requestBody:
+        description: Информация для создания нового предложения.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createOffer'
+        required: true
+
+      responses:
+        "201":
+          description:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOffer'
+
+
+components:
+  schemas:
+    createUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: keks@htmlacademy.ru
+
+        name:
+          type: string
+          example: Keks Cat
+
+        password:
+          type: string
+          example: 123456
+
+    user:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        email:
+          type: string
+          example: keks@htmlacademy.ru
+
+        avatarUrl:
+          type: string
+          example: photo.ru
+
+        isPro:
+          type: boolean
+          example: false
+
+        name:
+          type: string
+          example: Name FirstName
+
+    authUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: example@example.ru
+
+        password:
+          type: string
+          example: 123456
+
+    offer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: title
+
+        description:
+          type: string
+          example: description
+
+        postDate:
+          type: string
+          example: 2022-04-06T08:45:40.283Z
+          format: date
+
+        city:
+          type: string
+          example: Paris
+          enum:
+            - Paris
+            - Cologne
+            - Brussels
+            - Amsterdam
+            - Hamburg
+            - Dusseldorf
+
+        previewImage:
+          type: string
+          example: photo.png
+
+        images:
+          type: array
+          example:
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+
+        isPremium:
+          type: boolean
+          example: false
+
+        isFavorite:
+          type: boolean
+          example: false
+
+        rating:
+          type: number
+          example: 1.4
+
+        type:
+          type: string
+          example: Paris
+          enum:
+            - apartment
+            - house
+            - room
+            - hotel
+
+        bedrooms:
+          type: number
+          example: 2
+
+        maxAdults:
+          type: number
+          example: 3
+
+        price:
+          type: number
+          example: 100
+
+        goods:
+          type: array
+          example:
+            - Baby seat
+            - Washer
+            - Towels
+          enum:
+            - Breakfast
+            - Air conditioning
+            - Laptop friendly workspace
+            - Baby seat
+            - Washer
+            - Towels
+            - Fridge
+
+        latitude:
+          type: number
+          example: 48.85661
+
+        longitude:
+          type: number
+          example: 2.351499
+
+        comments:
+          type: array
+          example:
+            - k2n3k123k
+            - 123mk1m23
+            - 12m3lk1m23
+          enum:
+            - k1m23km123
+            - 12m312m3n12n
+            - m1231ml231m3
+            - 1k23mlk12m3
+            - 1k23ml1k2m3
+            - 12k3lk12m3
+            - 123k1m23k
+
+    createOffer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Title
+        description:
+          type: string
+          example: Description
+        postDate:
+          type: string
+          example: 2022-04-06T08:45:40.283Z
+          format: date
+        city:
+          type: string
+          example: Paris
+          enum:
+            - Paris
+            - Cologne
+            - Brussels
+            - Amsterdam
+            - Hamburg
+            - Dusseldorf
+        previewImage:
+          type: string
+          example: photo.png
+        images:
+          type: array
+          example:
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+            - photo.png,
+        isPremium:
+          type: boolean
+          example: false
+        isFavorite:
+          type: boolean
+          example: true
+        rating:
+          type: number
+          example: 4
+        type:
+          type: string
+          example: type
+        bedrooms:
+          type: number
+          example: 3
+        maxAdults:
+          type: number
+          example: 2
+        price:
+          type: number
+          example: 2000
+        goods:
+          type: array
+          example:
+            - Baby seat
+            - Washer
+            - Towels
+          enum:
+            - Breakfast
+            - Air conditioning
+            - Laptop friendly workspace
+            - Baby seat
+            - Washer
+            - Towels
+            - Fridge
+        userId:
+          type: string
+          example:  6329c3d6a04ab1061c6425ea
+        latitude:
+          type: number
+          example: 48.85661
+        longitude:
+          type: number
+          example: 2.351499
+
+
+    createComment:
+      type: object
+
+      properties:
+        content:
+          type: string
+          example: description
+
+        postDate:
+          type: string
+          example: 2022-04-06T08:45:40.283Z
+          format: date
+
+    comment:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        content:
+          type: string
+          example: description
+
+        postDate:
+          type: string
+          example: 2022-04-06T08:45:40.283Z
+          format: date
+
+        rating:
+          type: number
+          example: 4.5
+
+        userId:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea

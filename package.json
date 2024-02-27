@@ -10,7 +10,7 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run build && node ./dist/main.rest.js",
-    "start:dev": "npm run ts ./src/main.rest.ts | pino-pretty --colorize --translateTime SYS:standard",
+    "start:dev": "nodemon",
     "start:cli-version": "npm run build && node ./dist/main.cli.js --version",
     "start:cli-generate": "npm run build && node ./dist/main.cli.js --generate",
     "start:cli-import": "npm run build && node ./dist/main.cli.js --import",
@@ -51,6 +51,7 @@
     "got": "^14.1.0",
     "inversify": "^6.0.2",
     "mongoose": "^8.1.2",
+    "nodemon": "^3.0.3",
     "pino": "^8.18.0",
     "reflect-metadata": "^0.2.1"
   }
