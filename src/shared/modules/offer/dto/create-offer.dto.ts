@@ -16,6 +16,6 @@ export class CreateOfferDto {
   price: number;
   goods: Good[];
   userId: string;
-  comments?: string[];
+  commentCount?: number;
   location: Location;
 }

@@ -1,7 +1,6 @@
 import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 import { City, Good, Location, OfferType } from '../../types/index.js';
 import { UserEntity } from '../user/user.entity.js';
-import { CommentEntity } from '../comment/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface OfferEntity extends defaultClasses.Base {}
@@ -79,11 +78,8 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   })
     location: Location;
 
-  @prop({
-    ref: CommentEntity,
-    default: () => [],
-  })
-    comments: Ref<CommentEntity>[];
+  @prop({default: 0})
+  public commentCount!: number;
 
   @prop({
     ref: UserEntity,
