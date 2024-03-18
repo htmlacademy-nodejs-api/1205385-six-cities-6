@@ -1,3 +1,4 @@
+
 export const Component = {
   RestApplication: Symbol.for('RestApplication'),
   DatabaseClient: Symbol.for('DatabaseClient'),
@@ -8,6 +9,7 @@ export const Component = {
   UserService: Symbol.for('UserService'),
   UserModel: Symbol.for('UserModel'),
 
+  OfferController: Symbol.for('OfferController'),
   OfferService: Symbol.for('OfferService'),
   OfferModel: Symbol.for('OfferModel'),
 
