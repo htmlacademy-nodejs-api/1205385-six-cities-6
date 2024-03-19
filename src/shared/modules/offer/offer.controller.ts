@@ -6,7 +6,6 @@ import { Logger } from '../../libs/logger/index.js';
 import { OfferService } from './offer-service.interface.js';
 import { OfferRdo } from './rdo/offer.rdo.js';
 import { fillDTO } from '../../helpers/index.js';
-import { StatusCodes } from 'http-status-codes';
 import { CreateOfferDto } from './index.js';
 
 @injectable()
