@@ -48,7 +48,6 @@ export class RestApplication {
   private async _initController() {
     this.server.use('/offer', this.offerController.router);
     this.server.use('/users', this.userController.router);
-
   }
 
   private async _initMiddleware() {

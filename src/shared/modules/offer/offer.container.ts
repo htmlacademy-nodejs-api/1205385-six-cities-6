@@ -16,3 +16,11 @@ export function createOfferContainer() {
 
   return offerContainer;
 }
+
+// {
+//   "email": "torans@overlook.net",
+//   "avatarUrl": "torrance.png",
+//   "name": "Jack Torrance",
+//   "isPro": "Torrance",
+//   "password": "shining"
+// }
