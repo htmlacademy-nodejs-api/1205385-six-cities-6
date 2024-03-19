@@ -6,6 +6,8 @@ import { Logger } from '../../libs/logger/index.js';
 import { OfferService } from './offer-service.interface.js';
 import { OfferRdo } from './rdo/offer.rdo.js';
 import { fillDTO } from '../../helpers/index.js';
+import { StatusCodes } from 'http-status-codes';
+import { CreateOfferDto } from './index.js';
 
 @injectable()
 export class OfferController extends BaseController {
@@ -27,7 +29,13 @@ export class OfferController extends BaseController {
     this.ok(res, responseData);
   }
 
-  public async create(_req: Request, res: Response): Promise<void> {
-    this.ok(res, 'create');
+  public async create(
+    { body }: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>,
+    res: Response
+  ): Promise<void> {
+
+    const result = await this.offerService.create(body);
+    this.created(res, fillDTO(OfferRdo, result));
+    this.ok(res, body.title);
   }
 }
