@@ -4,7 +4,9 @@ export const Component = {
 
   Logger: Symbol.for('Logger'),
   Config: Symbol.for('Config'),
+  ExceptionFilter: Symbol.for('ExceptionFilter'),
 
+  UserController: Symbol.for('UserController'),
   UserService: Symbol.for('UserService'),
   UserModel: Symbol.for('UserModel'),
 
@@ -14,6 +16,4 @@ export const Component = {
 
   CommentService: Symbol.for('CommentService'),
   CommentModel: Symbol.for('CommentModel'),
-
-  ExceptionFilter: Symbol.for('ExceptionFilter'),
 } as const;

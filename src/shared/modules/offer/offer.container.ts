@@ -14,6 +14,5 @@ export function createOfferContainer() {
   offerContainer.bind<types.ModelType<OfferEntity>>(Component.OfferModel).toConstantValue(OfferModel);
   offerContainer.bind<Controller>(Component.OfferController).to(OfferController).inSingletonScope();
 
-
   return offerContainer;
 }
