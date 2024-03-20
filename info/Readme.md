@@ -29,3 +29,11 @@ db.<name>.find({ _id: ObjectId('string id') }) - получить конкрет
 ```
  npm run ts ./src/main.cli.ts -- --import  mocks/offers_test.tsv admin test localhost six-cities secret
 ```
+```
+ docker compose \                 
+--file ./docker-compose.dev.yml \
+--env-file ./.env \
+--project-name "six-cities" \
+up \
+-d
+```
