@@ -4,12 +4,23 @@ import { OfferService } from './offer-service.interface.js';
 import { Component } from '../../types/index.js';
 import { DefaultOfferService } from './default-offer.service.js';
 import { OfferEntity, OfferModel } from './offer.entity.js';
+import { Controller } from '../../libs/rest/index.js';
+import { OfferController } from './offer.controller.js';
 
 export function createOfferContainer() {
   const offerContainer = new Container();
 
   offerContainer.bind<OfferService>(Component.OfferService).to(DefaultOfferService);
   offerContainer.bind<types.ModelType<OfferEntity>>(Component.OfferModel).toConstantValue(OfferModel);
+  offerContainer.bind<Controller>(Component.OfferController).to(OfferController).inSingletonScope();
 
   return offerContainer;
 }
+
+// {
+//   "email": "torans@overlook.net",
+//   "avatarUrl": "torrance.png",
+//   "name": "Jack Torrance",
+//   "isPro": "Torrance",
+//   "password": "shining"
+// }
